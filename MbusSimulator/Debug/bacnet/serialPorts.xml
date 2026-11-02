@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serialPorts>
+	<serialPortOption value="0">/dev/ttyUSB0</serialPortOption>
+	<serialPortOption value="1">/dev/ttyUSB1</serialPortOption>
+	<serialPortOption value="2">/dev/ttyUSB2</serialPortOption>
+	<serialPortOption value="3">/dev/ttyUSB3</serialPortOption>
+	<serialPortOption value="4">/dev/ttyS0</serialPortOption>
+	<serialPortOption value="5">/dev/ttyS1</serialPortOption>
+	<serialPortOption value="6">/dev/ttyS2</serialPortOption>
+	<serialPortOption value="7">/dev/ttyS3</serialPortOption>
+</serialPorts>

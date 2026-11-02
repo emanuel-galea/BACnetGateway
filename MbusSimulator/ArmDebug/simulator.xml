@@ -1,0 +1,59 @@
+<?xml-stylesheet type="text/xsl" href="../bacConfig.xsl" ?>
+<simulator>
+	
+	<rs485>true</rs485>
+	<baud>2400</baud>
+	<portName>ttyUSB0</portName>
+	
+	<meters>
+		<meter>
+			<baud></baud>
+			<autoChecksum>true</autoChecksum>
+			<data>68 2F 2F 68 08 02 72 03 50 18 05 AC 48 41 03 01 00 00
+		00 0C 16 30 00 00 00 04 6D 80 00 27 12 42 6C 25 12 4C
+		16 14 00 00 00 42 EC 7E 3F 1C 0F C1 0D 01 0C FF 16</data>
+		</meter>
+		
+					
+	</meters>
+	
+	<modbus>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>2</address>
+			<function>01</function>		// read Coils
+			<subAddress>00</subAddress>
+			<data>02 01 01 00</data>
+
+		</object>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>5</address>
+			<function>04</function>		// read iNPUT rEGISTER
+			<subAddress>5051</subAddress>  // decimal
+			<data>02 04 02 55 55</data>
+
+		</object>		
+		
+		
+		<object>
+			<autoChecksum>false</autoChecksum>
+			<address>2</address>
+			<function>01</function>		// read Coils
+			<subAddress>05</subAddress>
+			<data>02 01 01 00 55 55</data>
+
+		</object>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>3</address>
+			<function>01</function>		// read Coils
+			<subAddress>00</subAddress>
+			<data>02 01 01 01</data>
+		</object>
+		
+	</modbus>
+	
+	
+	
+</simulator>

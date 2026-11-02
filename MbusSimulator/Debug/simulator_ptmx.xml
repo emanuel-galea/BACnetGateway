@@ -1,0 +1,267 @@
+<?xml-stylesheet type="text/xsl" href="../bacConfig.xsl" ?>
+<simulator>
+
+	<rs485>false</rs485>
+	<baud>2400</baud>
+	<portName>ptmx</portName>
+
+	<meters>
+		<meter>
+			<baud></baud>
+			<autoChecksum>true</autoChecksum>
+			<data>68 2F 2F 68 08 02 72 03 50 18 05 AC 48 41 03 01 00 00
+				00 0C 16 30 00 00 00 04 6D 80 00 27 12 42 6C 25 12 4C
+				16 14 00 00 00 42 EC 7E 3F 1C 0F C1 0D 01 0C FF 16</data>
+		</meter>
+		
+		<meter>
+			<baud></baud>
+			<autoChecksum>true</autoChecksum>
+			<data>68 2F 2F 68 08 FD 72 01 50 18 05 AC 48 41 03 01 00 00
+				00 0C 16 30 00 00 00 04 6D 80 00 27 12 42 6C 25 12 4C
+				16 14 00 00 00 42 EC 7E 3F 1C 0F C1 0D 01 0C FF 16</data>
+		</meter>
+		
+		<meter>
+			<baud>
+			</baud>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 17 72 32 59 34 00 42 04 06 02 32 00 00 00 0E 04
+				40 33 90 01 00 00 0D FD 0E 08 30 30 31 2D 31 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 02 1F 32 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 06 72 39 59 34 00 42 04 06 02 32 00 00 00 0E 04
+				90 16 03 01 00 00 0D FD 0E 08 30 30 31 2D 31 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 07 1F D3 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 06 72 39 59 34 00 42 04 06 02 32 00 00 00 0E 04
+				90 16 03 01 00 00 0D FD 0E 08 30 30 31 2D 31 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 07 1F D3 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 0A 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+
+
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 0B 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 0C 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 0D 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 0E 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<data>68 33 33 68 08 0F 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 10 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 11 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<data>68 33 33 68 08 12 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 13 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+
+		<meter>
+			<data>68 33 33 68 08 14 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 15 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 16 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 17 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<data>68 33 33 68 08 18 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 19 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 1A 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<data>68 33 33 68 08 1B 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 1C 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 1D 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 1E 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 1F 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 20 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 21 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 22 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 23 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 23 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 24 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		<meter>
+			<autoChecksum>true</autoChecksum>
+			<data>68 33 33 68 08 25 72 59 03 37 00 42 04 06 02 4F 00 00 00 0E 04
+				88 12 09 00 00 00 0D FD 0E 08 30 30 31 2D 32 32 33 44 07 FD 17 40 00
+				00 00 00 00 00 00
+				01 FF 18 03 1F B6 16</data>
+		</meter>
+		
+
+
+	</meters>
+
+	<modbus>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>2</address>
+			<function>01</function>		// read Coils
+			<subaddr></subaddr>
+			<data>01 00</data>
+
+		</object>
+	</modbus>
+
+
+
+</simulator>

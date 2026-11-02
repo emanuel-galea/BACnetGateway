@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<?xml-stylesheet type="text/xsl" href=".././mbus/readRecords.xsl" encoding="ISO-8859-1" ?>
+<records>
+	<meter>Meter 11-10016965</meter>
+	<meterIndex>0</meterIndex>
+	<message></message>
+	<record>
+		<value>10016965.000</value>
+		<unit>No-Units</unit>
+		<description>Facbrication No </description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+		<bacInst>0</bacInst>
+	</record>
+	<record>
+		<value>Facbrication No </value>
+		<unit>No-Units</unit>
+		<description>DI .tsuc0.e</description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value>01.Jul.2012 13:11 Win </value>
+		<unit>No-Units</unit>
+		<description>Time Point </description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value>Time Point </value>
+		<unit>No-Units</unit>
+		<description>emit .tabe</description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value>3108.806</value>
+		<unit>Cubic-Meters</unit>
+		<description>Volume </description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value>0.000</value>
+		<unit>Cubic-Meters</unit>
+		<description>Volume </description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value>3080.909</value>
+		<unit>Cubic-Meters</unit>
+		<description>Volume </description>
+		<subUnit>0</subUnit>
+		<storage>1</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+	<record>
+		<value></value>
+		<unit>No-Units</unit>
+		<description>Manu. Specific</description>
+		<subUnit>0</subUnit>
+		<storage>0</storage>
+		<tariff>0</tariff>
+		<function>Inst.</function>
+	</record>
+</records>
+

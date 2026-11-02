@@ -1,0 +1,21 @@
+<?xml-stylesheet type="text/xsl" href="../bacConfig.xsl" ?>
+<simulator>
+
+	<rs485>false</rs485>
+	<baud>2400</baud>
+	<portName>ptmx</portName>
+
+	<meters>
+		<meter>
+			<baud></baud>
+			<autoChecksum>true</autoChecksum>
+			<data>68 36 36 68 08 01 72 26 98 20 00 42 04 02 02 0F 00 00 00 0E 04
+				40 33 99 63 00 00 0A FF 68 40 00 0A FF 69 01 00 07 FD 17 40 00 00 00
+				00 00 00 00 01 FF 18 15 1F 00 00 00 00 00 DB 16
+
+			</data>
+		</meter>
+	</meters>
+
+
+</simulator>
