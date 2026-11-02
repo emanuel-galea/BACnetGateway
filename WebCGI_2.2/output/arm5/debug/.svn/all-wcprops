@@ -1,0 +1,49 @@
+END
+update
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/update
+END
+index
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/index
+END
+upcgi
+K 25
+svn:wc:ra_dav:version-url
+V 70
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/upcgi
+END
+baccgi
+K 25
+svn:wc:ra_dav:version-url
+V 71
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/baccgi
+END
+bacConfig
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/bacConfig
+END
+nph-javalib
+K 25
+svn:wc:ra_dav:version-url
+V 76
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/nph-javalib
+END
+netConfig
+K 25
+svn:wc:ra_dav:version-url
+V 74
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/netConfig
+END
+passConfig
+K 25
+svn:wc:ra_dav:version-url
+V 75
+/svn/bacnet/!svn/ver/210/WebCGI_2.2/WebCGI_2.2/output/arm5/debug/passConfig
+END
