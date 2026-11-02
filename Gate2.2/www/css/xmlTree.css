@@ -1,0 +1,62 @@
+body {
+	margin: 0px 0 auto;
+	background-repeat: no-repeat;
+	font-family: Verdana, Arial;
+	font-size: medium;
+	background-color: #ffffE0;
+	text-align: left;
+}
+.trigger{
+/*	cursor: pointer;
+	cursor: hand;  */
+	display: block;
+	color: #774f69;
+	font-weight: bold;
+}
+.branch{
+	display: block;
+	margin-left: 16px;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+#icontent {
+	width: 1000px;
+	height: 700px;
+	border: medium;
+	border-style: solid;
+	border-color: #774f69;
+}
+
+h2 {
+	color: #774f69;
+}
+
+
+#divLeft {
+	margin: 2px;
+	left: 0;
+	padding: 0px;
+/*	width: 250px;*/
+	float: left;
+}
+
+#divRight {
+	border: 0;
+	padding: 0px;
+	width: 1008px;
+	height: 708px;
+	float: right;
+}
+
+.titleField {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #774f69;
+	font-size: x-large;
+}
+

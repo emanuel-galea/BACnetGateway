@@ -1,0 +1,58 @@
+<html>
+<HEAD>
+<TITLE>The BACnet Gateway</TITLE>
+<link rel="stylesheet" href="../css/wine.css"></link>
+<link rel="shortcut icon" href="/images/32/logo_32.png"></link>
+
+<script language="javascript">
+function reboot() {
+	if (confirm ("Do you really want to reboot the device ?")) {
+		document.forms[0].reboot.value = "yes";
+		document.indexForm.submit();
+	}
+}	
+
+</script>
+</HEAD>
+<body style="margin-top: 20px;">
+	<p>
+	<H2>
+		<img style="vertical-align: middle; border: 0"
+			src="/images/48/logo_48.png" /> Kara Systems
+	</H2>
+	<div class="titleField">MBus:BACnet Gateway</div>
+	<br>
+	<a href="http://www.karasystems.eu" style="font-size: small">www.karasystems.eu</a>
+	<p>
+	<form name="upcgi" action="/cgi/upcgi" enctype="MULTIPART/FORM-DATA"
+		method="post">
+
+		<input name="action" value="11" type="hidden" />
+		<input name="gate" value="modbus" type="hidden" />
+		Upload Modbus Configuration
+		<p />
+		<br> Update Modbus Configuration File: <input type="file"
+			size="80%" name="file" value="file" />
+		<p />
+		<input type='submit' style="width: 120px" value='Update' name="update" />
+
+		<p />
+		<br />
+
+
+		<p>		
+		<A href="/modbus/modbus.html">
+			<img style="border: 0; vertical-align: middle; width: 100px" src="/images/24/modbus.jpg" />
+										Modbus Gateway
+		</A>
+
+			
+		<p>
+			<A href="../index.html"><img border="0"
+				src="/images/32/Backward_Green.png"> Main-Menu</A>
+	</form>
+
+
+	</form>
+</body>
+</html>

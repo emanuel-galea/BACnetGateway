@@ -13,6 +13,7 @@
 #include <sys/ipc.h>
 #include <sys/sem.h>
 #include <errno.h>
+#include <unistd.h>
 
 #include <time.h>
 #include <signal.h>
@@ -127,7 +128,7 @@ void response() {
 			//			fprintf(stderr, "readbytes=%d", numread);
 			if (numread > 0) {
 				buffer[numread] = 0;
-				printf(buffer);
+				printf("%s",buffer);
 			} else {
 				break;
 			}

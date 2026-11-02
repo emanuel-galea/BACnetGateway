@@ -1,0 +1,68 @@
+<configuration>
+	<enableTrace>off</enableTrace>
+	<message></message>
+	<logOptions>
+		<option>Emergency</option>
+		<option>Alert</option>
+		<option>Critical</option>
+		<option>Error</option>
+		<option>Warning</option>
+		<option>Notice</option>
+		<option>Info</option>
+		<option>Debug</option>
+	</logOptions>
+	<deviceType>M-BusGatway</deviceType>
+	<logLevel>Warning</logLevel>
+	<tracerIp>192.168.2.14</tracerIp>
+	<MBus><consumption>off</consumption>
+		<rs485>off</rs485>
+		<serialPortName>ttyUSB0</serialPortName>
+		<baudrates>
+			<option enabled="false">300</option>
+			<option enabled="false">600</option>
+			<option enabled="true">1200</option>
+			<option enabled="true">2400</option>
+			<option enabled="true">4800</option>
+			<option enabled="false">9600</option>
+			<option enabled="false">19200</option>
+		</baudrates>
+		<enableTrace>off</enableTrace>
+	</MBus>
+
+
+
+	<objects>
+		<object type="Device">
+			<instance>2271</instance>
+			<type>Device</type>
+			<name>MBus-Gateway</name>
+			<properties>
+				<property></property>
+			</properties>
+		</object>
+		<object>
+			<instance>0</instance>
+			<type>Notification-Class</type>
+			<properties>
+				<property>
+					<propertyId>Object-Name</propertyId>
+					<value>notify</value>
+				</property>
+			</properties>
+		</object>
+	</objects>
+	<bbmd>
+		<foreignDevice>
+			<ipAddress></ipAddress>
+			<port></port>
+		</foreignDevice>
+				<enable>true</enable>
+		<foreignDevices>
+			<device>
+				<ipAddress></ipAddress>
+				<port></port>
+
+			</device>
+		</foreignDevices>
+	</bbmd>
+</configuration>

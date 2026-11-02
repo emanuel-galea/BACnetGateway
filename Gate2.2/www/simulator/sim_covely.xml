@@ -1,0 +1,105 @@
+<?xml-stylesheet type="text/xsl" href="../bacConfig.xsl" ?>
+<simulator>
+	
+	<rs485>true</rs485>
+	<baud>2400</baud>
+	<portName>ptmx</portName>
+	
+	<meters>
+		<meter>
+			<baud></baud>
+			<autoChecksum>false</autoChecksum>
+			<data>68 D3 D3 68 08 01 72 15 76 00 03 B5 15 01 02 00 00 00 00 86 10 83 00 49 3B 12 00 00 00 02 
+			FD E0 00 18 00 02 FD C9 FF 81 00 EC 00 02 FD C9 FF 82 00 E9 00 02 FD C9 FF 83 00 E9 00 03 FD D9 
+			FF 81 00 05 0E 00 03 FD D9 FF 82 00 EC 0E 00 03 FD D9 FF 83 00 C3 0D 00 03 FD D9 00 B5 2A 00 04 
+			AB FF 81 00 31 03 00 00 04 AB FF 82 00 6D 03 00 00 04 AB FF 83 00 29 03 00 00 04 AB 00 C7 09 00 
+			00 01 FF E1 FF 81 00 60 01 FF E1 FF 82 00 62 01 FF E1 FF 83 00 62 13 FD D9 FF 81 00 57 0E 00 13 
+			FD D9 FF 82 00 F4 0E 00 13 FD D9 FF 83 00 01 0E 00 14 AB FF 81 00 45 03 00 00 14 AB FF 82 00 70 
+			03 00 00 14 AB FF 83 00 36 03 00 00 03 FF 91 00 E8 03 00 02 FF 92 00 01 00 5B 16 </data>
+		</meter>
+		<meter>
+			<baud>
+			</baud>
+			<autoChecksum>false</autoChecksum>
+			<data>68 A4 A4 68 08 02 72 95 40 09 38 B4 05 2B 04 C7 
+			      00 00 00 0C 05 84 93 38 00 8C 10 05 00 00 00 00
+			      8C 20 05 00 00 00 00 0C 12 51 63 66 07 0C 2A 43 
+			      96 15 01 0B 3A 35 02 02 0A 5A 61 08 0A 5E 65 03 
+			      0A 62 96 04 0B 26 58 03 00 04 6D 13 0C 44 1B 7C 
+			      05 00 00 00 00 7C 12 00 00 00 00 FC 10 05 00 00 
+			      00 00 FC 20 05 00 00 00 00 72 6C 00 00 42 EC 7E 
+			      7E 16 BC 01 05 00 00 00 00 BC 01 12 00 00 00 00 
+			      BC 11 05 00 00 00 00 BC 21 05 00 00 00 00 B2 01 
+			      6C 00 00 82 01 EC 7E 5F 1C 8C 40 13 10 00 00 00 
+			      8C 80 40 13 10 00 00 00 7C 16 </data>
+		</meter>
+		<meter>
+		<autoChecksum>false</autoChecksum>
+			<data>68 1B 1B 68 08 03 72 34 36 01 07 AC 48 09 03 DB 
+			      00 00 00 06 16 22 7E 00 00 00 00 0F 01 01 0A A1 16 </data>
+		</meter>
+		<meter>
+		<autoChecksum>false</autoChecksum>
+			<data>68 F8 F8 68 08 04 72 00 13 24 65 A7 32 02 04 28
+			      60 00 00 09 74 04 09 70 04 0C 06 39 39 00 00 0C 
+			      14 24 62 00 00 0B 2D 00 00 00 0B 3B 00 00 00 0A 
+			      5B 73 00 0A 5F 28 00 0A 62 50 04 4C 14 00 00 00 
+			      00 4C 06 00 00 00 00 0C 78 00 13 24 65 89 10 71 
+			      60 9B 10 2D 50 21 00 DB 10 2D 00 00 00 9B 10 3B 
+			      96 30 00 9A 10 5B 70 01 9A 10 5F 97 00 0C 22 08 
+			      05 00 00 3C 22 37 03 00 00 7C 22 00 00 00 00 42 
+			      6C 01 01 8C 20 06 22 05 00 00 8C 30 06 11 01 00 
+			      00 8C 80 10 06 25 00 00 00 CC 20 06 00 00 00 00 
+			      CC 30 06 00 00 00 00 CC 80 10 06 00 00 00 00 9A 
+			      11 5B 70 01 9A 11 5F 97 00 9B 11 3B 96 30 00 9B 
+			      11 2D 50 21 00 BC 01 22 37 03 00 00 8C 01 06 11 
+			      18 00 00 8C 21 06 97 00 00 00 8C 31 06 50 00 00 
+			      00 8C 81 10 06 22 00 00 00 8C 01 14 75 28 00 00 
+			      04 6D 00 0C 44 1B 0F 03 02 00 00 22 F0 16</data>
+		</meter>
+		
+		
+				
+	</meters>
+	
+	<modbus>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>2</address>
+			<function>01</function>		// read Coils
+			<subAddress>04</subAddress>
+			<data>02 01 01 00</data>
+
+		</object>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>2</address>
+			<function>43</function>		// read Coils
+			<subAddress>14</subAddress>  // decimal
+			<data>02 2B 0E 01 01 00 00 01 01 04 41 42 43 44</data>
+
+		</object>
+		
+		
+		
+		<object>
+			<autoChecksum>false</autoChecksum>
+			<address>2</address>
+			<function>01</function>		// read Coils
+			<subAddress>05</subAddress>
+			<data>02 01 01 00 55 55</data>
+
+		</object>
+		<object>
+			<autoChecksum>true</autoChecksum>
+			<address>3</address>
+			<function>01</function>		// read Coils
+			<subAddress>00</subAddress>
+			<data>02 01 01 01</data>
+
+		</object>
+	</modbus>
+	
+	
+	
+</simulator>

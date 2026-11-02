@@ -1,0 +1,7 @@
+<svg contentScriptType="text/ecmascript" width="600" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 600.0 400.0" height="400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:rtda="http://www.itris.fr/2003/animation" version="1.0">
+<defs/>
+<text x="321" y="128" style="font-size:32pt;fill:#6464ff;" transform="matrix(1 0 0 1 -82 53)">
+BACnet</text>
+<image x="75" y="80" width="90" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hmi/images/124-2446_IMG.JPG" xlink:type="simple" xlink:actuate="onLoad" height="65" preserveAspectRatio="none meet" xlink:show="embed"/>
+<image x="325" y="245" width="220" xmlns:xlink="http://www.w3.org/1999/xlink" xlink:href="/hmi/images/pumpen/add2.png" xlink:type="simple" xlink:actuate="onLoad" height="100" preserveAspectRatio="none meet" xlink:show="embed"/>
+</svg>

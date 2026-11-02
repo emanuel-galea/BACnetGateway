@@ -63,10 +63,10 @@ endif
 CC =		gcc
 CDEFS =		${SSL_DEFS} ${SSL_INC}
 ##CFLAGS =	-O ${CDEFS}
-CFLAGS = -Wall -pthread -lcrypt
+CFLAGS = -Wall -pthread -fno-pie
 #CFLAGS =	-g ${CDEFS}
 #LDFLAGS =	-g
-LDFLAGS =	-Wl,-lcrypt,-lnsl,-ldl,-lpthread
+LDFLAGS =	-Wl,-lcrypt,-lnsl,-ldl,-lpthread -no-pie
 LDLIBS =	${SSL_LIBS} ${SYSV_LIBS} ${CRYPT_LIB}
 
 endif
@@ -127,7 +127,7 @@ endif
 
 CC = arm-none-linux-gnueabi-gcc
 CFLAGS     = -Wall -pthread
-LDFLAGS =	 -Wl,-lcrypt,-lnsl,-ldl,-lpthread
+LDFLAGS =	 -Wl -lcrypt -lnsl -ldl -lpthread
 ###LINKSTDCPP = $(HOME)/arm_gw22_cc/lib32/libstdc++.a 
 OSINC      = -I/usr/local/arm-none-linux-gnueabi/include -I/usr/include -I/usr/local/include
 CDEFS      = -DHL_LINUX_ARM -DHL_UNIX
@@ -159,7 +159,7 @@ ifeq ($(OS_TYPE),ARM5)
 endif
 
 mini_httpd:	mini_httpd.o match.o tdate_parse.o
-	${CC} ${CFLAGS} ${DBGDEF} ${LDFLAGS} mini_httpd.o match.o tdate_parse.o ${LDLIBS} -o $(EXE_NAME)
+	${CC} ${CFLAGS} ${DBGDEF}  mini_httpd.o match.o tdate_parse.o ${LDLIBS} -o $(EXE_NAME) ${LDFLAGS}
 
 
 mini_httpd.o:	mini_httpd.c version.h port.h match.h tdate_parse.h mime_encodings.h mime_types.h
@@ -185,7 +185,7 @@ mime_types.h: mime_types.txt
 
 
 htpasswd:	htpasswd.o
-	${CC} ${CFLAGS} ${DBGDEF} ${LDFLAGS} htpasswd.o ${LDLIBS} -o htpasswd
+	${CC} ${CFLAGS} ${DBGDEF}  htpasswd.o ${LDLIBS} -o htpasswd ${LDFLAGS}
 
 htpasswd.o:	htpasswd.c
 	${CC} ${CFLAGS} ${DBGDEF} -c htpasswd.c

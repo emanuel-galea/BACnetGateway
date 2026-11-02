@@ -1,0 +1,11 @@
+# UNCONFIGURED FSTAB FOR BASE SYSTEM
+none                   /dev/pts      devpts    defaults            0      0
+none                   /dev/shm      tmpfs     defaults            0      0
+ubi0:rootfs            /             ubifs     defaults,noatime    0      0
+tmpfs                  /var/lock     tmpfs     defaults,size=50m,mode=0755 0 0
+tmpfs                  /var/log      tmpfs     defaults,size=50m,mode=0755 0 0
+tmpfs                  /var/run      tmpfs     defaults,size=50m,mode=0755 0 0
+tmpfs                  /tmp          tmpfs     defaults,size=100m,mode=1777 0 0
+/tmp                   /var/tmp      bind      defaults,bind       0      0
+/dev/mmcblk0p1	       /mnt/SD       vfat      defaults
+

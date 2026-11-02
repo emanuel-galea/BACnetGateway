@@ -7,7 +7,7 @@
 CC = CC=arm-linux-gcc
 STRIP=arm-linux-strip /mnt/disk/webbox/bacnet/bacserv
 
-all: buildbac buildbaccgi buildnet buildpass buildupdate buildupcgi buildindex buildjavalib
+all: buildbac buildbaccgi buildnet buildpass buildupdate buildupcgi buildindex
 	@echo "ALL Ready"
 
 clean: bacconfig/Makefile netconfig/Makefile \
@@ -15,7 +15,6 @@ clean: bacconfig/Makefile netconfig/Makefile \
 	( cd bacconfig ; make clean )
 	( cd netconfig ; make clean )
 	( cd passconfig ; make clean )
-	( cd javalib ; make clean )
 	( cd update ; make clean )
 	( cd upcgi ; make clean )
 #	( cd backdoor ; make clean )
@@ -44,9 +43,6 @@ buildbaccgi: baccgi/Makefile
 	
 buildindex: index/Makefile
 	( cd index ; make $(ARCH_PARAM) $(DEBUG_PARAM))
-	
-buildjavalib: javalib/Makefile
-	( cd javalib ; make $(ARCH_PARAM) $(DEBUG_PARAM))
 	
 buildupcgi: upcgi/Makefile
 	( cd upcgi ; make $(ARCH_PARAM) $(DEBUG_PARAM))

@@ -14,6 +14,7 @@
 #include <sys/stat.h>
 #include <fcntl.h>
 #include <time.h>
+#include <unistd.h>
 
 #include "Parser.h"
 #include "HtmlParser.h"
@@ -252,7 +253,7 @@ void responseBuffer(char * page, char * buffer) {
 
 	printf("<?xml version=\"1.0\" encoding=\"UTF-8\"?>\n");
 	printf("<?xml-stylesheet type=\"text/xsl\" href=\"../%s\" ?>\n", page);
-	printf(buffer);
+	printf("%s",buffer);
 	return;
 }
 /**
@@ -400,7 +401,7 @@ int resetConfig(char * message) {
 	if (retValue != 0 && (errno != 2)) {
 		printf("Status: 400 Ok\r\n\r\n");
 		printf("%d:",retValue);
-		printf(message);
+		printf("%s",message);
 		return retValue;
 	}
 
@@ -408,7 +409,7 @@ int resetConfig(char * message) {
 		retValue = sysCommand(tempBuffer, message);
 		if (retValue != 0 && (errno != 2)) {
 			printf("Status: 400 Ok\r\n\r\n");
-			printf(message);
+			printf("%s",message);
 			return retValue;
 		}
 
@@ -427,7 +428,7 @@ int resetConfig(char * message) {
 	retValue = sysCommand(tempBuffer, message);
 	if (retValue != 0) {
 		printf("Status: 400 Ok\r\n\r\n");
-		printf(message);
+		printf("%s",message);
 		return retValue;
 	}
 	adminList(0, "Configuraiton Resetted");
@@ -564,7 +565,7 @@ int main(int argc, char *argv[]) {
 		} else {
 			printf("Status: 400 Ok\r\n\r\n");
 		}
-		printf(message);
+		printf("%s",message);
 		return 0;
 	}
 
@@ -661,7 +662,7 @@ int main(int argc, char *argv[]) {
 		responseBuffer("update.xsl", "<root>");
 		printGateways(stdout);
 		printf("</root>");
-		return;
+		return -4;
 	}
 
 	if (updateSoftware) {

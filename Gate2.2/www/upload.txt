@@ -1,0 +1,413 @@
+/*
+ * sheevaInstall.c
+ *
+ *  Created on: Dec 29, 2010
+ *      Author: emanuel
+ */
+
+#include <stdio.h>
+#include <termio.h>
+#include <sys/types.h>
+#include <sys/ioctl.h>
+#include <fcntl.h>
+#include <inttypes.h>
+#include <stdlib.h>
+#include <unistd.h>
+#include "syslog.h"
+#include <errno.h>
+#include <string.h>
+#include <pty.h>
+#include <stdint.h>
+#include <stdbool.h>
+#include "sys/stat.h"
+
+#define REC_BUFFER_LENGTH 2048
+
+typedef enum {
+	PARITY_NONE = 0, PARITY_ODD = 1, PARITY_EVEN
+} PARITY;
+
+//#define  B115200 0000018
+
+typedef struct _serialPort {
+	int portFD;
+	uint8_t mbusAddress; // current Address
+	char * portName;
+	struct termios portstate_orig;
+	int baudrateIndex;
+} SerialPort;
+
+int readSerialPort(SerialPort * pSerialPort);
+
+uint8_t recBuffer[REC_BUFFER_LENGTH];
+uint8_t sendBuffer[REC_BUFFER_LENGTH];
+static char * pSimFile;
+
+pid_t pid;
+int fd;
+struct termios tty_state;
+const int baudrateDelay[] = {
+		1200, 650, 400, 370, 300, 200, 200, 200 }; // milliseconds
+
+static const int baudrateInterface[] = {
+		B300, B600, B1200, B2400, B4800, B9600, B19200, B38400, B115200 };
+
+bool debug;
+
+char serialPortName[32];
+static char initMessage[64];
+int baudrateIndex;
+bool bEnableTracer;
+
+SerialPort serialPort;
+
+/**
+ *
+ *
+ */
+int setBaudrate(int baudrate) {
+	//	char buffer[32];
+	//	syslog(LOG_DEBUG, "set Baudrate to %d \n", baudrates[baudrate]);
+	cfsetispeed(&tty_state, baudrateInterface[baudrate]);
+	cfsetospeed(&tty_state, baudrateInterface[baudrate]);
+	if (tcsetattr(serialPort.portFD, TCSANOW, &tty_state) < 0) {
+		syslog(LOG_ERR, "set Baudrate ERROR ");
+	}
+	return 0;
+}
+/**
+ *
+ */
+
+int dataToBinary(char * pText, uint8_t * pData) {
+	char ch;
+	int value;
+	int dataLength = 0;
+	while (*pText != 0) {
+		value = 0;
+		ch = *pText++;
+		if ((ch >= '0') && (ch <= '9')) {
+			value = ch - '0';
+		} else if ((ch >= 'A') && (ch <= 'F')) {
+			value = (ch - 'A') + 10;
+		} else if ((ch >= 'a') && (ch <= 'f')) {
+			value = (ch - 'a') + 10;
+		} else {
+			continue;
+		}
+		if (pText != 0) {
+			ch = *pText++;
+			value = value << 4;
+			if ((ch >= '0') && (ch <= '9')) {
+				ch = ch - '0';
+			} else if ((ch >= 'A') && (ch <= 'F')) {
+				ch = (ch - 'A') + 10;
+			} else if ((ch >= 'a') && (ch <= 'f')) {
+				ch = (ch - 'a') + 10;
+			}
+			value |= ch & 0xF;
+			pData[dataLength++] = value;
+		}
+	}
+	return dataLength;
+}
+
+char * writeFile(char * fileName, char * buffer) {
+
+	FILE * pFile;
+	pFile = fopen(fileName, "w");
+	if (pFile == NULL) {
+		return NULL;
+	}
+	fputs(buffer, pFile);
+	fclose(pFile);
+	return buffer;
+}
+
+/**
+ *
+ *
+ */
+uint8_t * readFile(char * fileName, int * pLength) {
+	long lSize;
+	long result;
+	uint8_t * buffer;
+	FILE * pFile;
+	pFile = fopen(fileName, "r");
+	if (pFile == NULL) {
+		//		fprintf(stderr, "File error: %s \n", filePath);
+		return NULL;
+	}
+
+	// obtain file size:
+	fseek(pFile, 0, SEEK_END);
+	lSize = ftell(pFile);
+	rewind(pFile);
+
+	buffer = (uint8_t *) malloc(sizeof(char) * lSize);
+	if (buffer == NULL) {
+		fputs("Memory error", stderr);
+		return NULL;
+	}
+
+	// copy the file into the buffer:
+	result = fread(buffer, 1, lSize, pFile);
+	if (result != lSize) {
+		fputs("Reading error", stderr);
+		free(buffer);
+		return NULL;
+	}
+	*pLength = lSize;
+	fclose(pFile);
+	//	free(buffer);
+	return buffer;
+}
+
+/**
+ *
+ *
+ */
+static void cleanup(void) {
+	//	remove("/tmp/mbus_simulator_port.txt");
+}
+/**
+ *
+ *
+ */
+/**
+ *
+ *
+ *
+ * return -1 on error
+ */
+int openSerialInterface(int baudrateIndex, int parity) {
+	char message[100];
+	int retValue, fd;
+
+	serialPort.portName = &serialPortName[0];
+	if ((fd = open(serialPort.portName, O_RDWR | O_NOCTTY | O_NDELAY)) < 0) {
+		sprintf(&message[0], "ERROR: Failed to open port %s error %s", serialPortName, strerror(errno));
+		printf(message);
+		return -1;
+	}
+	serialPort.portFD = fd;
+	serialPort.baudrateIndex = baudrateIndex;
+	/* save off original settings */
+	bzero(&tty_state, sizeof(struct termios));
+	//	tty_state.c_lflag = 0; //ICANON;
+	tty_state.c_iflag |= INPCK; // Enable input parity checking.
+	tty_state.c_lflag &= ~(ICANON | ECHO | ECHOE | ISIG);
+	tty_state.c_cflag |= (PARENB | CLOCAL | B2400); // Enable Parity  ignore modem lines
+	switch (parity) {
+	case PARITY_NONE:
+		tty_state.c_cflag &= ~(PARENB); //Disbale parity
+		break;
+	case PARITY_EVEN:
+		tty_state.c_cflag &= ~(PARODD); // Enable Parity EVEN
+		break;
+	case PARITY_ODD:
+		tty_state.c_cflag |= PARODD; // Enable Parity ODD
+		break;
+	}
+	tty_state.c_cflag &= ~(CSTOPB | CSIZE); // EVEN Parity, only one stop bit
+	tty_state.c_cflag |= CS8; // 8 bit
+	tty_state.c_cflag |= CREAD; // enable receiver
+	//	tty_state.c_cflag |= CRTSCTS; // enable RTS
+
+	tty_state.c_cc[VMIN] = 0;
+	tty_state.c_cc[VTIME] = 0; // 500 milli seconds
+	cfsetispeed(&tty_state, baudrateInterface[baudrateIndex]);
+	cfsetospeed(&tty_state, baudrateInterface[baudrateIndex]);
+
+	tcflush(fd, TCIFLUSH);
+	if ((retValue = tcsetattr(fd, TCSAFLUSH, &tty_state)) < 0) {
+		sprintf(&message[0], "Setting Serial Port settings %s tcsetattr failed with error: %s", serialPortName,
+				strerror(errno));
+		return -3;
+	}
+	ioctl(fd, TCFLSH, TCIOFLUSH);
+	return fd;
+}
+/**
+ *   M A I N
+ *
+ */
+int main(int argc, char *argv[]) {
+
+	debug = false;
+	bool makeLogin;
+	int argn = 1;
+	int length;
+	char mac[20];
+	char * pChar;
+	char * pChar2;
+	char buffer[256];
+	char password[32];
+	strcpy(serialPortName, "/dev/ttyUSB0");
+	while (argn < argc && argv[argn][0] == '-') {
+		if (strcmp(argv[argn], "-D") == 0) {
+			debug = true;
+			printf("DEBUG mode\n");
+		} else if (strcmp(argv[argn], "-i") == 0 && argn + 1 < argc) {
+			++argn;
+			strcpy(serialPortName, argv[argn]);
+		} else if (strcmp(argv[argn], "-f") == 0 && argn + 1 < argc) {
+			++argn;
+			pSimFile = argv[argn];
+			printf("simulator File is %s\n", pSimFile);
+		}
+		++argn;
+	}
+
+	int retValue;
+	atexit(cleanup);
+
+	retValue = openSerialInterface(8, PARITY_NONE);
+	if (retValue < 0) {
+		printf("\nSerila Initialization error %d\n", retValue);
+		exit(1);
+	}
+	printf("Reboot Device, waiting for data...\n");
+	fflush(stdout);
+	//	pSerialFile = fdopen(serialPort.portFD, "w+");
+	while (1) {
+		// loop for login
+
+		retValue = readSerialPort(&serialPort);
+		if (retValue == 0) {
+			printf(".");
+			sleep(1);
+			buffer[0] = '\n';
+			retValue = write(serialPort.portFD, buffer, 1);
+			continue;
+		}
+		if (retValue < 1) {
+			fprintf(stderr, "Communication Error %d %s", retValue, strerror(errno));
+			perror("Communication Error ");
+			retValue = openSerialInterface(8, PARITY_NONE);
+			if (retValue != 0) {
+				printf("Serial Initialization error %d\n", retValue);
+				printf("Press a key to continue ");
+				gets(buffer);
+			}
+			continue;
+			//			exit(3);
+		}
+		// Data Received
+		printf("Data input: %s\n", recBuffer);
+		if (strstr((char *) recBuffer, "Hit any key to stop") != NULL) {
+//			strcpy(password, "nosoup4u\n");
+//			makeLogin = true;
+			break;
+		}
+
+
+		printf("-");
+		usleep(10000);  // 10 ms
+		continue;
+	} // while
+
+	sprintf(buffer, "\n");
+	retValue = write(serialPort.portFD, buffer, strlen(buffer));
+	usleep(200000); // 100 ms
+	retValue = readSerialPort(&serialPort);
+	printf((char *) recBuffer);
+
+	sprintf(buffer, "printenv ethaddr\n");
+	retValue = write(serialPort.portFD, buffer, strlen(buffer));
+	usleep(200000); // 100 ms
+	retValue = readSerialPort(&serialPort);
+	printf((char *) recBuffer);
+	pChar = strstr((char *) recBuffer, "ethaddr=");
+	if (pChar == NULL) {
+		printf("\n ERROR:  ethaddr not found\n");
+		exit(3);
+	}
+	pChar += 8;
+	memcpy(mac, pChar, 17);
+	mac[17] = 0x0;
+
+	/// Writing to file
+	pChar = getcwd(buffer, 256);
+	strcat(buffer, "/uboot/uboot-env/uboot-nand-custom.txt");
+	pChar = (char *) readFile(buffer, &length);
+	if (pChar == NULL) {
+		printf("\n ERROR:  File not found %s\n", buffer);
+		exit(3);
+	}
+	pChar2 = strstr(pChar, "ethaddr");
+	if (pChar2 == NULL) {
+		printf("ERROR:  ethaddr not found in %s\n", buffer);
+		exit(4);
+	}
+	pChar2 += 8;
+	memcpy(pChar2, mac, 17);
+	if (writeFile(buffer, pChar) == NULL) {
+		printf("ERROR: Couldn't write to file %s\n", buffer);
+		exit(4);
+	}
+	printf("\n READY. Mac is : %s\n", mac);
+	free(pChar);
+	exit(0);
+}
+
+/**
+ *
+ * @return 0 = nothing received, LT 0  means error, GT 0 lenght of data received
+ *
+ */
+int readSerialPort(SerialPort * pSerialPort) {
+	fd_set rset;
+	int retValue;
+	int i;
+	struct timeval tv;
+	int recIndex = 0;
+	int timeout;
+	//	timeout = baudrateDelay[pSerialPort->baudrateIndex];
+	timeout = 2000;
+	while (1) {
+		if (timeout >= 1000) {
+			tv.tv_sec = timeout / 1000;
+			tv.tv_usec = (timeout % 1000) * 1000;
+		} else {
+			tv.tv_sec = 0;
+			tv.tv_usec = timeout * 1000;
+		}
+		FD_ZERO(&rset);
+		FD_SET (pSerialPort->portFD, &rset);
+		retValue = select(pSerialPort->portFD + 1, &rset, NULL, NULL, &tv);
+		if (retValue == 0) {
+			//			printf("Timeout\n");
+			retValue = recIndex;
+			break;
+		} else if (retValue < 0) {
+			fprintf(stderr, "Select Error: %s\n", strerror(errno));
+			break;
+		} else {
+			if (FD_ISSET(pSerialPort->portFD, &rset)) {
+				/* data coming from device */
+				retValue = read(pSerialPort->portFD, &recBuffer[recIndex], REC_BUFFER_LENGTH - recIndex);
+				recIndex += retValue;
+				//				printf("Data recieved length=%d  -  ", retValue);
+				if (debug) {
+					for (i = 0; i < recIndex; i++) {
+						printf("%2X ", recBuffer[i]);
+					}
+					printf("\n ");
+				}
+				//				fprintf(stderr, "data recieved %d", retValue);
+
+				timeout = 150;
+				return recIndex;
+			}
+			//			tv.tv_sec = 0;
+			//			tv.tv_usec = 150 * 1000; // 150 milli
+			//			usleep(10000);		// 10 milli
+			if (debug) {
+				printf("Data Received %d ", retValue);
+			}
+		}
+
+	} // while
+	return retValue;
+}

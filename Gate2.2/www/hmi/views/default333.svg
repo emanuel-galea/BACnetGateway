@@ -1,0 +1,13 @@
+<svg contentScriptType="text/ecmascript" width="600" xmlns:xlink="http://www.w3.org/1999/xlink" zoomAndPan="magnify" contentStyleType="text/css" viewBox="0 0 600.0 400.0" height="400" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" xmlns:rtda="http://www.itris.fr/2003/animation" version="1.0">
+<rect x="225" width="320" y="220" height="135" style="fill:#6464ff;stroke:#000000;"/>
+<defs/>
+<text x="321" y="128" style="font-size:32pt;fill:#6464ff;" transform="matrix(1 0 0 1 -262 193)">
+<rtda:measureText tag="Kara BACnetGateway:  2271/VDD-01/float; 0:7" invalidText="XXXXXXXXX"/>
+BACnet</text>
+<rect x="0" width="1" y="0" height="1" style="fill:#6464ff;stroke:#000000;"/>
+<text x="165" y="85" style="font-size:12pt;fill:#6464ff;" transform="matrix(1 0 0 1 -35 0)">
+Tempreture</text>
+<text x="310" y="95" style="font-size:12pt;fill:#6464ff;" transform="matrix(1 0 0 1 -75 -10)">
+??????<rtda:measureText tag="Kara BACnetGateway:  2271/TKollektor/float; 0:0"/>
+</text>
+</svg>

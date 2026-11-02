@@ -1,0 +1,109 @@
+<html>
+<HEAD>
+<TITLE>The BACnet Gateway</TITLE>
+<link rel="stylesheet" href="css/wine.css"></link>
+<link rel="shortcut icon" href="/images/32/logo_32.png"></link>
+
+<script language="javascript">
+function reboot() {
+	if (confirm ("Do you really want to reboot the device ?")) {
+		document.forms[0].reboot.value = "yes";
+		document.indexForm.submit();
+	}
+}	
+
+</script>
+</HEAD>
+<body style="margin-top: 20px;">
+<p>
+<H2><img style="vertical-align: middle; border: 0"
+	src="/images/48/logo_48.png" /> Kara Systems</H2>
+<div class="titleField">BACnet Gateway Administration</div>
+<p>
+<form name="indexForm" action="cgi/netConfig" method="post"><input
+	type="hidden" name="reboot" value=""> Administration Menu
+<table class='container' id="bacnet" cellpadding="8" cellspacing="2">
+
+	
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/node_edit.png"></td>
+		<td style="text-align: left">
+		<A href="cgi/netConfig" class="btn">
+		Network/Date Configuration </A></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/bacnet.png"></td>
+		<td style="text-align: left"><A href="cgi/bacConfig?action=0">
+		BACnet Configuration </A></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/key_edit.png"></td>
+		<td style="text-align: left"><A href="passConfig.html">
+		Change Password </A></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/utilities-log_viewer.png"></td>
+		<td style="text-align: left"><A href="cgi/baccgi?gate=0&action=6"> View Logs
+		 </A></td>
+		<td></td>
+	</tr>
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/text-x-log.png"></td>
+		<td style="text-align: left"><A href="cgi/baccgi?gate=0&action=9"> Configure Logs
+		 </A></td>
+		<td></td>
+	</tr>
+
+
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/box_software.png"></td>
+		<td style="text-align: left"><A href="update.html"> Update
+		new software </A></td>
+		<td></td>
+	</tr>
+
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/document_certificate.png"></td>
+		<td style="text-align: left"><A href="cgi/baccgi?action=3&gate=0">
+		Upgrade License </A></td>
+		<td></td>
+	</tr>
+
+
+
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/system-reboot.png"></td>
+		<td style="text-align: left"><A href="javascript:reboot()">
+		Reboot Device </A></td>
+		<td></td>
+	</tr>
+	
+	<tr>
+		<td style="text-align: right"><img border="0"
+			src="images/32/system-reboot.png"></td>
+		<td style="text-align: left"><A href="javascript:reboot()">
+		Reset Configuration </A></td>
+		<td></td>
+	</tr>
+
+</table>
+<p>
+<A href="/index.html" >
+		<img style="border: 0; vertical-align: middle" src="/images/32/Backward_Green.png"/>
+		Main-Menu</A>
+</form>
+</body>
+</html>

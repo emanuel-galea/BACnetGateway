@@ -1,0 +1,120 @@
+<HTML>
+<HEAD>
+<title>M-Bus:BACnet Gateway</title>
+<link rel="stylesheet" href="../css/wine.css"></link>
+<link rel="shortcut icon" href="/images/32/logo_32.png"></link>
+
+
+<script language="javascript">
+	var request = null;     // ajax request object
+	var playing = true;
+	var timer;
+	
+	function sendRequest() { 
+    if (typeof XMLHttpRequest != 'undefined') {
+        request = new XMLHttpRequest();
+    }
+    if (!request) {
+        try {
+            request  = new ActiveXObject("Msxml2.XMLHTTP");
+        } catch(e) {
+            try {
+                request  = new ActiveXObject("Microsoft.XMLHTTP");
+            } catch(e) {
+                request  = null;
+            }
+        }
+    }
+    if (request) {
+        request.open("POST", "/cgi/baccgi?gate=mbus\&action=10", false);
+        request.onreadystatechange = requestResponce;
+        request.send("");
+       
+    }
+}
+
+	// 
+	function requestResponce() {
+    if ((request.readyState == 4 ) && ( request.status == 200)) {
+    	xmlDoc=request.responseXML;
+        if (xmlDoc != null) {
+	        records = xmlDoc.getElementsByTagName("record");
+	        for (i =0; i < records.length; i++) {
+	        	addElement(records[i].firstChild.nodeValue);
+	        }       
+        } else {	
+        	alert("no data received");
+        }
+        if (playing == true) {
+        	timer = setTimeout( 'sendRequest()', 1000 );
+        }
+    } else {
+    	//alert("error");
+    }
+}
+
+
+	function addElement(elementText){
+	if (elementText.length == 0) {
+		return;
+	}
+	// This is the <ul id="myList"> element that will contains the new elements
+	var container = document.getElementById('myList');
+	// Create a new <li> element for to insert inside <ul id="myList">
+	var new_element = document.createElement('li');
+	new_element.innerHTML = elementText;
+	container.insertBefore(new_element, container.firstChild);
+	// Show a message if the element has been added;
+	// document.getElementById('msg').style.display="block";
+	// document.getElementById('msg').innerHTML = "Elemend added!";
+	// Clean input field
+}
+
+	function stop () {
+		playing = false;
+		clearTimeout(timer);
+		document.getElementById('play').style.display='inline';
+		document.getElementById('pause').style.display="none";
+	}
+	
+	function play () {
+		playing = true;
+		document.getElementById('play').style.display="none";
+		document.getElementById('pause').style.display="inline";
+		sendRequest();
+	}
+</script>
+</HEAD>
+<body style="margin-top: 10px;">
+
+<form name="upload" method="post">
+<p />
+<h3>M-Bus BACnet Gateway</h3>
+<h3><img style="vertical-align: middle; border: 0" src="/images/48/edit-find.png"> Meter
+Scanning ... <img hspace="10" src="/images/spacer.gif" /> 
+<a	href="javascript:stop()"> <img id="pause"
+	style="border: 0; display: inherit" title="Pause"
+	src="/images/24/media_pause.png"> </a> 
+<a href="javascript:play()"><img
+	id="play" style="border: 0; display: none" title="Continue"
+	src="/images/24/media_play.png"></a>
+<img hspace="5" src="/images/spacer.gif" />
+<a href="javascript:stop(); window.location.href='../cgi/baccgi?gate=mbus&amp;action=15'"><img id="stop" style="border: 0;" title="STOP
+	SCAN" src="/images/24/media_stop.png"></a>
+</h3>	
+
+
+<a href="javascript:stop(); window.location.href='../cgi/baccgi?gate=mbus&amp;action=1';">
+<img src="/images/32/Backward_Yellow.png" style="vertical-align: middle; border: 0; height: 24px" /> to Meter
+List </a>
+
+<div id="msg"></div>
+
+<ul id="myList" style="font-size: small">
+</form>
+</body>
+<script>Copy of scan.html
+     timer = setTimeout( 'sendRequest()', 200 );
+</script>
+</HTML>
+

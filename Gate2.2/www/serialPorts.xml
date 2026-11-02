@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ports>
+	<port>
+		<name>ttyS0</name>
+	</port>
+	<port>
+		<name>ttyS1</name>
+	</port>
+	<port>
+		<name>ttyS2</name>
+	</port>
+	<port>
+		<name>ttyS3</name>
+	</port>
+	<port>
+		<name>ttyS4</name>
+	</port>
+</ports>

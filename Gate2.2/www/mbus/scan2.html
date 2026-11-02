@@ -1,0 +1,81 @@
+<HTML>
+<HEAD>
+<title>M-Bus:BACnet Gateway</title>
+<link rel="stylesheet" href="../css/wine.css"></link>
+<link rel="shortcut icon" href="/images/32/logo_32.png"></link>
+
+
+<script>
+
+    var playing = true;
+	var timer;
+
+function reloadIFrame() {
+   iframe = document.getElementById('scanFrame');
+   iframe.contentDocument.location.reload(true);
+   if (playing == true) {
+        timer = setTimeout( 'reloadIFrame()', 2000 );
+   }
+}
+
+function scrollIFrame() {
+   iframe = document.getElementById('scanFrame');
+   iframe.contentWindow.scrollTo(0, 999999);
+}
+
+function stop () {
+		playing = false;
+		clearTimeout(timer);
+		document.getElementById('play').style.display='inline';
+		document.getElementById('pause').style.display="none";
+	}
+	
+function play () {
+		playing = true;
+		document.getElementById('play').style.display="none";
+		document.getElementById('pause').style.display="inline";
+		reloadIFrame();
+	}
+
+</script>
+
+</HEAD>
+<body style="margin-top: 10px;">
+
+<form name="upload" method="post">
+<p />
+<h3>M-Bus BACnet Gateway</h3>
+<h3><img style="vertical-align: middle; border: 0" src="/images/48/edit-find.png"> Meter
+Scanning ... <img hspace="10" src="/images/spacer.gif" /> 
+<a	href="javascript:stop()"> <img id="pause"
+	style="border: 0; display: inherit" title="Pause"
+	src="/images/24/media_pause.png"> </a> 
+<a href="javascript:play()"><img
+	id="play" style="border: 0; display: none" title="Continue"
+	src="/images/24/media_play.png"></a>
+<img hspace="5" src="/images/spacer.gif" />
+<a href="javascript:stop(); window.location.href='../cgi/baccgi?gate=mbus&amp;action=15'"><img id="stop" style="border: 0;" title="STOP
+	SCAN" src="/images/24/media_stop.png"></a>
+</h3>	
+
+
+<a href="javascript:stop(); window.location.href='../cgi/baccgi?gate=mbus&amp;action=1';">
+<img src="/images/32/Backward_Yellow.png" style="vertical-align: middle; border: 0; height: 24px" /> to Meter
+List </a>
+
+<div id="msg"></div>
+
+<iframe id="scanFrame" onload="scrollIFrame()"  
+marginwidth="20" marginheight="20" width="640" height="550" scrolling="yes" frameborder=1 
+src="/cgi/update?action=4">
+
+
+</iframe>
+
+</form>
+</body>
+<script>
+   timer = setTimeout( 'reloadIFrame()', 4000 );
+</script>
+</HTML>
+

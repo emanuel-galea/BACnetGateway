@@ -79,9 +79,9 @@ bool getJnlp() {
 	printf("Content-type: application/x-java-jnlp-file\n");
 	//	printf("Content-type: application/x-java-archiver\n");
 	printf("\r\n");
-	printf(contents);
-	printf(base);
-	printf(codebaseIndex);
+	printf("%s",contents);
+	printf("%s", base);
+	printf("%s",codebaseIndex);
 	writeXmlChar(stdout, argument, "-url");
 	sprintf(base, "http://%s/", getenv("HTTP_HOST"));
 	writeXmlChar(stdout, argument, base);
@@ -89,7 +89,7 @@ bool getJnlp() {
 	writeXmlChar(stdout, argument, getenv("REMOTE_USER"));
 	writeXmlChar(stdout, argument, "-pwd");
 	writeXmlChar(stdout, argument, getenv("REMOTE_PASSWORD"));
-	printf(argumentIndex);
+	printf("%s",argumentIndex);
 	return true;
 }
 
@@ -138,7 +138,7 @@ int main(int argc, char *argv[]) {
 		} else {
 			printf("Status: 400 Ok\r\n\r\n");
 		}
-		printf(message);
+		printf("%s",message);
 		return 0;
 	} else {
 		responseXSL("../index.xsl");

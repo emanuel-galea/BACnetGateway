@@ -27,7 +27,7 @@
 #define DEVICE_SHEEVA_DEBIAN 3
 #define DEVICE_RASPBERRY_PI 4
 
-
+bool writeNetworkConfig();
 
 
 #endif //netConfigArtila_H

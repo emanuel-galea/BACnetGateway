@@ -2,6 +2,7 @@
 #include "Parser.h"
 #include "netConfigArtila.h"
 #include "ezxml.h"
+#include "ReadConfig.h"
 
 #define HOST_NAME "hostName"
 #define IP_ADDRESS "ipAddress"
@@ -192,7 +193,7 @@ int main(int argc, char *argv[]) {
 
 	if (deviceType == DEVICE_UNKNOWN) {
 		sendMessage("Sorry, unknown Device", true);
-		return;
+		return -3;
 	}
 
 #endif
@@ -250,7 +251,7 @@ int main(int argc, char *argv[]) {
 	if (inputParameters != NULL) {
 		if (admin == false) {
 			sendMessage("Sorry, access denied. Only for 'admin' user.", true);
-			return;
+			return -2;
 		}
 		parseInput(inputParameters, &outputMessage);
 		if (strcmp(param_reboot, "yes") == 0) {
@@ -328,7 +329,7 @@ int main(int argc, char *argv[]) {
 
 	contents = readFile(GATEWAYS_FILE, &length);
 	if (contents != NULL) {
-		printf(contents);
+		printf("%s",contents);
 		free(contents);
 	} else {
 		printf("<gateways></gateways>");

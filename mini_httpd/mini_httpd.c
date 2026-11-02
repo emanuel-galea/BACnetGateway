@@ -51,6 +51,7 @@
 #include <arpa/inet.h>
 #include <netdb.h>
 #include <dirent.h>
+#include <grp.h>
 
 #include "port.h"
 #include "match.h"
@@ -611,7 +612,7 @@ int main(int argc, char** argv) {
 		 ** that the logfile pathname still works from inside the chroot
 		 ** tree.
 		 */
-		if (logfile != (char*) 0)
+		if (logfile != (char*) 0) {
 			if (strncmp(logfile, cwd, strlen(cwd)) == 0) {
 				(void) strcpy(logfile, &logfile[strlen(cwd) - 1]);
 				/* (We already guaranteed that cwd ends with a slash, so leaving
@@ -623,6 +624,7 @@ int main(int argc, char** argv) {
 				(void) fprintf(stderr,
 						"%s: logfile is not within the chroot tree, you will not be able to re-open it\n", argv0);
 			}
+		}
 		(void) strcpy(cwd, "/");
 		/* Always chdir to / after a chroot. */
 		if (chdir(cwd) < 0) {

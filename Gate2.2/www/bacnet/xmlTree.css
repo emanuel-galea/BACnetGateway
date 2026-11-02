@@ -1,0 +1,57 @@
+body {
+	margin: 0px 5 auto;
+	background-repeat: no-repeat;
+	font-family: Verdana, Arial;
+	font-size: small;
+	background-color: #ffffE0;
+	text-align: left;
+}
+.trigger{
+	cursor: pointer;
+	cursor: hand;
+	display: block;
+	color: #774f69;
+	font-weight: bold;
+}
+.branch{
+	display: block;
+	margin-left: 16px;
+}
+a{
+	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
+}
+
+#icontent {
+	width: 100%;
+	height: 650px;
+}
+
+h2 {
+	color: #774f69;
+}
+
+
+#divLeft {
+	margin: 0px;
+	left: 0;
+	padding: 0px;
+	width: 25%;
+	float: left;
+}
+
+#divRight {
+	padding: 0px;
+	width: 75%;
+	float: left;
+}
+
+.titleField {
+	font-family: verdana, Geneva, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	color: #774f69;
+	font-size: x-large;
+}
+

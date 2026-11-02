@@ -1,0 +1,50 @@
+<html>
+<HEAD>
+<TITLE>Modbus:BACnet Gateway</TITLE>
+<link rel="stylesheet" href="../css/wine.css"></link>
+<link rel="shortcut icon" href="/images/32/logo_32.png"></link>
+
+<script language="javascript">
+function reboot() {
+	if (confirm ("Do you really want to reboot the device ?")) {
+		document.forms[0].reboot.value = "yes";
+		document.indexForm.submit();
+	}
+}	
+
+</script>
+</HEAD>
+<body style="margin-top: 20px;">
+	<p>
+		<a href="http://www.karasystems.eu" style="text-decoration: normal"><img
+			style="vertical-align: middle; border: 0"
+			src="/images/48/logo_48.png" /> Kara Systems</a>
+	<div class="titleField">Modbus:BACnet Gateway</div>
+	<br>
+	<p>
+	<form action="cgi/baccgi" method="post">
+		Modbus-Menu
+		<p />
+		<br></br> <A href="/cgi/baccgi?gate=modbus&action=0"><img
+			style="border: 0; width: 40px" src="/images/32/device.png">
+			Modbus Devices </A>
+
+		<p></p>
+		<A href="/cgi/baccgi?gate=modbus&action=1&index=-1"><img
+			style="border: 0; width: 32px" src="/images/32/objects.png">
+			List all Modbus Objects </A>
+		
+		<p><br><p>
+		<img style="height: 40" src="/images/spacer.gif" />
+		
+		<a href="/cgi/baccgi?gate=modbus&action=10"><img style="border: 0" src="/images/24/download.png" />Export Configuration</a>
+			<br />
+		<a href="uploadConfig.html"><img style="border: 0" src="/images/24/file-upload.png" />Import Configuration</a>
+		<p><br><p>
+			<img style="height: 30" src="/images/spacer.gif" />
+		<A href="/index.html"><img border="0"
+			src="/images/32/Backward_Green.png"> Main-Menu</A>
+
+	</form>
+</body>
+</html>

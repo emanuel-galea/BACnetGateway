@@ -14,6 +14,8 @@
 #include <sys/ipc.h>
 #include <netinet/in.h>
 #include <signal.h>
+#include <arpa/inet.h>
+#include <unistd.h>
 #include "Configuration.h"
 #include "Parser.h"
 #include <errno.h>
